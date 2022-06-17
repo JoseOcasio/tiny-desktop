@@ -4,6 +4,9 @@ import './desktop.css';
 import WinboxReact from 'winbox-react';
 import 'winbox/dist/css/winbox.min.css';
 
+import Terminal from './terminal/terminal';
+import Game from './game/game';
+
 class Desktop extends React.Component {
     constructor(props) {
       super(props);
@@ -17,14 +20,12 @@ class Desktop extends React.Component {
         return `${ pre }_${ new Date().getTime() }`;
     }
 
-    handleClick(name, index){
+    handleClick(app, index){
         const background = 'linear-gradient(90deg, rgba(49,36,239,1) 0%, rgba(67,0,168,1) 100%)';
 
         const windowObject = 
-        <WinboxReact key={this.generateKey(index)} title={name} x={30} y={30} border={4} background={background}>
-            <div>
-            <h1>Hello, WinBox!</h1>
-            </div>
+        <WinboxReact key={this.generateKey(index)} title={app.name} x={30} y={30} border={4} background={background}>
+           {app.content}
          </WinboxReact>;
 
         this.setState({ windows: [...this.state.windows, windowObject] })
@@ -32,11 +33,32 @@ class Desktop extends React.Component {
         return this.state.windows;
     }
 
+    createApps() {
+      const game = {
+        name: "Game",
+        content: <Game/>
+      }
+
+      const trash = {
+        name: "Trash",
+        content: <div><h1>Hello From Trash</h1></div>
+      }
+
+      const terminal = {
+        name: "Terminal",
+        content: <Terminal/>
+      }
+
+      return [game, trash, terminal]
+    }
+
     render() {
-        const applications = ["App1", "Terminal", "Folder", "Pictures", "Videos", "Trash"];
         
+
+        const applications = this.createApps();
+
         const items = applications.map((app, index) => {
-            return <button style={{animationDelay: index/80+'s'}} className='desktop-app app-animation' key={index} onClick={() => this.handleClick(app, index)} > {app} </button>;
+            return <button style={{animationDelay: index/80+'s'}} className='desktop-app app-animation' key={index} onClick={() => this.handleClick(app, index)} > {app.name} </button>;
         });
 
         const windows = this.state.windows.map((app) => {
