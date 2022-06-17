@@ -1,7 +1,7 @@
 import React from 'react';
 import './desktop.css';
 
-import WinboxReact from 'winbox-react';
+import WinboxReact from 'react-winbox';
 import 'winbox/dist/css/winbox.min.css';
 
 import Terminal from './terminal/terminal';
@@ -24,7 +24,7 @@ class Desktop extends React.Component {
         const background = 'linear-gradient(90deg, rgba(49,36,239,1) 0%, rgba(67,0,168,1) 100%)';
 
         const windowObject = 
-        <WinboxReact key={this.generateKey(index)} title={app.name} x={30} y={30} border={4} background={background}>
+        <WinboxReact height={400} key={this.generateKey(index)} title={app.name} x={30} y={30} border={4} background={background}>
            {app.content}
          </WinboxReact>;
 
@@ -53,17 +53,15 @@ class Desktop extends React.Component {
     }
 
     render() {
-        
+      const applications = this.createApps();
 
-        const applications = this.createApps();
+      const items = applications.map((app, index) => {
+          return <button style={{animationDelay: index/80+'s'}} className='desktop-app app-animation' key={index} onClick={() => this.handleClick(app, index)}> {app.name} </button>;
+      });
 
-        const items = applications.map((app, index) => {
-            return <button style={{animationDelay: index/80+'s'}} className='desktop-app app-animation' key={index} onClick={() => this.handleClick(app, index)} > {app.name} </button>;
-        });
-
-        const windows = this.state.windows.map((app) => {
-            return app;
-        } );
+      const windows = this.state.windows.map((app) => {
+          return app;
+      } );
 
       return(
         <div style={{padding: 30}}>
