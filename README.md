@@ -9,4 +9,5 @@ npm start
 
 
 # Inspiration
-(Snake Code)[https://www.educative.io/blog/javascript-snake-game-tutorial]
+[Snake Code](https://www.educative.io/blog/javascript-snake-game-tutorial)
+[React Winbox with Lifecycle Management](https://github.com/RickoNoNo3/react-winbox)
