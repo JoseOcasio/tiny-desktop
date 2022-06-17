@@ -13,8 +13,7 @@ class Terminal extends React.Component {
                         <span id="terminal__prompt--bling">$</span>    
                         <span id="terminal__prompt--cursor">
                             <input autoFocus id="terminal__prompt--input"></input>
-                        </span>
-                        
+                        </span>   
                     </div>        
                 </section>      
             </div>    

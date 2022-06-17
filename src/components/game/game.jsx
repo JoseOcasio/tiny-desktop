@@ -1,46 +1,45 @@
-import React from 'react';
+import { useState } from 'react';
 import './game.css';
+import GameCanvas from './gameCanvas';
 
-class Game extends React.Component {
-    constructor(props) {
-        super(props);
-  
-        this.state = {
-          gameStatus: "INIT"
-        };
-
-        //neccesary to make this work on the callback
-        this.startGame = this.startGame.bind(this)
+function Game(props) {
+    const [gameStatus, setStatus] = useState("INIT");
+    
+    function setupGame(e) {        
+        setStatus("START");
     }
 
-    startGame(e) {
-        this.setState({
-            gameStatus: "START"
-        });
+    //send to child for update
+    const updateStatus = status => {
+        setStatus(status);
     }
 
-    renderer() {
-        if (this.state.gameStatus == "INIT") {
+    function renderer() {
+        if (gameStatus == "INIT") {
             return (
                 <div className='container'>
                     <div className='game-container'>
-                        <button id="w2" onClick={this.startGame} className='game-button'><span>Resume</span></button>
-                        <button className='game-button'>New Game</button>
+                        <button onClick={setupGame} className='game-button'>New Game</button>
                         <button className='game-button'>Start</button>
                     </div>
                 </div>
             );
         }
-        else if (this.state.gameStatus == "START") {
+        else if (gameStatus == "START") {
             return (
-                <div>START NOW</div>
+                <GameCanvas updateStatus={updateStatus} height={props.height} width={props.width}/>
+            );
+        }
+        else if (gameStatus == "END"){
+            return(
+                <div>
+                    GAME OVER
+                </div>
             );
         }
     }
 
-    render() {
-        return this.renderer();
-    }
+    return renderer();
 }
 
 export default Game;
