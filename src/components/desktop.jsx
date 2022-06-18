@@ -6,6 +6,7 @@ import 'winbox/dist/css/winbox.min.css';
 
 import Terminal from './terminal/terminal';
 import Game from './game/game';
+import Trash from './trash/trash';
 
 class Desktop extends React.Component {
     constructor(props) {
@@ -43,7 +44,7 @@ class Desktop extends React.Component {
 
       const trash = {
         name: "Trash",
-        content: <div><h1>Hello From Trash</h1></div>,
+        content: <Trash/>,
         height: 400,
         width: 400
       }

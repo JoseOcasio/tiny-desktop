@@ -104,6 +104,7 @@ function GameCanvas(props) {
         function main() {
             if (hasGameEnded()){
                 document.removeEventListener("keydown", changeDirection)
+                //update parent that the gameStatus is END
                 props.updateStatus("END")
                 return;
             }
