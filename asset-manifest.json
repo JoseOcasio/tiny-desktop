@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tiny-desktop/static/css/main.2e88504f.css",
+    "main.js": "/tiny-desktop/static/js/main.ea0978af.js",
+    "static/js/787.4eab6a7f.chunk.js": "/tiny-desktop/static/js/787.4eab6a7f.chunk.js",
+    "index.html": "/tiny-desktop/index.html",
+    "main.2e88504f.css.map": "/tiny-desktop/static/css/main.2e88504f.css.map",
+    "main.ea0978af.js.map": "/tiny-desktop/static/js/main.ea0978af.js.map",
+    "787.4eab6a7f.chunk.js.map": "/tiny-desktop/static/js/787.4eab6a7f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e88504f.css",
+    "static/js/main.ea0978af.js"
+  ]
+}
