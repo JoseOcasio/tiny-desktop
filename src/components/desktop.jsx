@@ -2,7 +2,7 @@ import React from 'react';
 import './desktop.css';
 
 import WinboxReact from 'react-winbox';
-import 'winbox/dist/css/winbox.min.css';
+// import 'winbox/dist/css/winbox.min.css';
 
 import Terminal from './terminal/terminal';
 import Game from './game/game';
